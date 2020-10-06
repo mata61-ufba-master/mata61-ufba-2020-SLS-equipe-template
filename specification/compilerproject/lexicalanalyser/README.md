@@ -14,14 +14,14 @@ Para conhecer Flex, pode utilizar texto [Flex in a Nutshell](../../resources/21-
 
 Em sua implementação do analisador léxico, considere as seguintes classes de _tokens_ da linguagem:
 
-__ID__      Identifier  
+__ID__      Identificador  
 __NUM__     Literal decimal (integer)  
-__KEY__     Keyword  
-__SYM__     Lexical Symbol  
-__ERROR__   Lexeme of the first error found  
+__KEY__     Keyword (palavra-chave) 
+__SYM__     Símbolo Léxico  
+__ERROR__   Lexema do primeiro erro encontrado
 
 Comentários e caracteres de espacejamento (_white space_) devem ser descartados durante a fase de análise léxica do compilador. Você deve imprimir o número da linha na qual o _token_ foi encontrado, inclusive no caso de erro. O analisador léxico deve parar após encontrar o primeiro erro léxico.
-No caso de erro por um comentário não fechado (_unfinished comment error_), o lexema ```'/*' ``` deve ser o _token_ __ERROR__. 
+No caso de erro, retornar o _token_ __ERROR__. 
 O formato de saída é: 
 
 ``` (line_num,token_class,"lexeme") ```
@@ -36,7 +36,7 @@ void main(void)
 ```
 
 ## Como executar (dois argumentos: entrada e saída)
-O programa deve ler a entrada a partir de um arquivo (_source_) e escrever a saída em outro arquivo (_target_):
+Seu programa deve ler a entrada a partir de um arquivo (_source_) e escrever a saída em outro arquivo (_target_):
 ```
 $ ./lexer main.c main.lex
 ```
