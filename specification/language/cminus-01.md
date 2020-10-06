@@ -13,7 +13,7 @@ As palavras-chave são reservadas e devem ser escritam em letras minúsculas.
 2. Símbolos especiais
 
 ```
-  +  -  *  /  <  <=  >  >=  ==  !=  =  ;  ,  (  )  [  ]  {  }  /*  */
+  +  -  *  /  <  <=  >  >=  ==  !=  =  ;  ,  (  )  [  ]  {  }  //
 ```
 
  3. ID (identificadores) e NUM (números inteiros)
@@ -34,9 +34,8 @@ Carateres minúsculos e maiúsculos são diferenciados.
 
 5. Comentários de uma linha apenas
 
-Comentários podem ser colocados em qualquer local em que caracteres de espacejamento (_white spaces_) podem aparecer (isto é, comentários não podem ser colocados dentro de _tokens_).
-Comentários não podem se estender por mais de uma linha e não podem ser aninhados.
 Comentários de uma linha (_single-line comments_) sempre são iniciados por "//".
+Comentários não podem se estender por mais de uma linha e não podem ser aninhados.
 Outros tipos de comentários  não são suportados.
 
 -----
