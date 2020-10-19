@@ -12,7 +12,7 @@ O projeto do compilador tem 4 partes e cada uma será avaliada separadamente.  S
 
 ## Partes do Compilador
 + [Parte I: Análise Léxica](./lexicalanalyser/README.md)
-+ Parte II: Análise Sintática
++ [Parte II: Análise Sintática](./parser/README.md)
 + Parte III: Análise Semática
 + Parte IV: Geração de Código
 
