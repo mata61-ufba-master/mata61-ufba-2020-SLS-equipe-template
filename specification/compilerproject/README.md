@@ -18,4 +18,4 @@ O projeto do compilador tem 4 partes e cada uma será avaliada separadamente.  S
 
 
 -----
-Material cedido pelo Prof. Vinicius.
+Material cedido pelo Prof. Vinicius Petrucci.
