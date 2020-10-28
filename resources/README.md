@@ -1,8 +1,8 @@
 # Recursos
 
 + [Livro online de Douglas Thain](https://www3.nd.edu/~dthain/compilerbook/)
-   - [Parser](https://www3.nd.edu/~dthain/compilerbook/chapter5.pdf)
-   - [AST](https://www3.nd.edu/~dthain/compilerbook/chapter6.pdf)
+   - [Parser in Practice](https://www3.nd.edu/~dthain/compilerbook/chapter5.pdf)
+   - [AST - Abstract Syntax Tree](https://www3.nd.edu/~dthain/compilerbook/chapter6.pdf)
 
 + [Lex e Yacc](http://dinosaur.compilertools.net/)
 
