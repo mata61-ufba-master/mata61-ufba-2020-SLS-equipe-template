@@ -38,7 +38,7 @@ onde o operador ```op1``` possui dois operandos: ```[op2 [a] [b]]``` e ```[c]```
 Assim, a expressão ```4 == (2 + 2)``` em C-, 
 é representada como ```[== 4 [+ 2 2]]``` na notação da AST.
 
-#### Listas de nós que podem ser mostrados na AST
+### Listas de nós que podem ser mostrados na AST
 
 A seguir, apresentamos os tipos de nós que podem aparecem em uma AST e seus nomes correspondentes, e que deverão ser produzidos pelo seu analisador sintático:  
 
@@ -66,11 +66,11 @@ A seguir, apresentamos os tipos de nós que podem aparecem em uma AST e seus nom
 
          * [ID]                 ---> nome de varável
 
-   * [compound-stmt  ... ]     ---> (opções de filhos abaixo)
+   * ```[compound-stmt  ... ]```     ---> (opções de filhos abaixo)
 
    - [;]                       ---> null statement
 
-   - [selection-stmt ... ]     ---> ou comando IF 
+   - ```[selection-stmt ... ]```     ---> ou comando IF 
 
       * [EXPRESSION               ---> definição recursiva de qualquer expressão válida (expressão binária, variable reference, function call, etc)
 
@@ -78,17 +78,17 @@ A seguir, apresentamos os tipos de nós que podem aparecem em uma AST e seus nom
 
       * [compound-stmt  ... ]      --> (opcional) ramo "else" (false) 
 
-   - [iteration-stmt  ... ]
+   - ```[iteration-stmt  ... ]```
 
       * [EXPRESSION                 ---> definição recursiva de qualquer expressão válida (expressão binária, variable reference, function call, etc)
 
       * [compound-stmt ... ]        --> loop bloco de comandos (statements)
 
-   - [return-stmt ... ]
+   - ```[return-stmt ... ]```
 
       * [EXPRESSION                     ---> definição recursiva de qualquer expressão válida (binary expression, variable reference, function call, etc)
 
-    - [OP ... ]                      ---> operadores de expressão binária OP = {+, -, *, /, <, <=, >, >=, ==, !=, =}                             (opções de "filhos" abaixo)
+    - ```[OP ... ]```                      ---> operadores de expressão binária OP = {+, -, *, /, <, <=, >, >=, ==, !=, =}                             (opções de "filhos" abaixo)
 
       * [var  ... ]               ---> variable reference
 
@@ -113,4 +113,95 @@ A seguir, apresentamos os tipos de nós que podem aparecem em uma AST e seus nom
             * [OP ... ]   
 
       * [OP ... ]              ---> recursivamente outra expressão binária
+
+
+### How to run it (using two arguments: input and output)
+
+The program must read input from a file (source) and write output to another file (target). In case of syntactic error, the contents of the output file must be empty (0 bytes).
+
+```$ ./parser main.c main.ast```
+
+### Example of input file (main.c)
+
+```int g;
+
+int foo(int x, int y, int z[]) {
+
+    z[0] = 0;
+    y = x * y + 2;
+
+    if(y == 0){
+        y = 1;
+    }
+
+    return y;
+
+}
+
+void main(void) {
+
+    int a[10];
+
+    while(g < 10){
+        g = foo(g, 2, a);
+        ;
+    }
+}
+```
+
+### Example of output file (main.ast)
+
+Important: You do not have to worry about whitespaces in the output file, they will be ignored during the auto-grading process.
+
+```
+[program 
+  [var-declaration [int] [g]]
+  [fun-declaration 
+    [int]
+    [foo] 
+    [params 
+      [param [int] [x]] 
+      [param [int] [y]] 
+      [param [int] [z] [\[\]]]]
+    [compound-stmt 
+      [= [var [z] [0]] [0]]
+      [= [var [y]] 
+        [+ 
+          [* [var [x]] [var [y]]] [2]]]
+      [selection-stmt 
+        [== [var [y]] [0]]
+        [compound-stmt 
+          [= [var [y]] [1]]
+        ]
+      ]
+      [return-stmt [var [y]]]
+    ]
+  ]
+  [fun-declaration 
+    [void]
+    [main]
+    [params]
+    [compound-stmt 
+      [var-declaration [int] [a] [10]]
+      [iteration-stmt 
+        [< [var [g]] [10]]
+        [compound-stmt 
+          [= [var [g]] 
+            [call
+              [foo]
+              [args [var [g]] [2] [var [a]]]
+            ]]
+          [;]
+        ]
+      ]
+    ]
+  ]
+]
+```
+
+Exemplo de ilustração de AST (produzido a partir de https://yohasebe.com/rsyntaxtree/)
+
+--------
+Adaptado e traduzido a partir do material do Prof. Vinicius Petrucci.
+
 
