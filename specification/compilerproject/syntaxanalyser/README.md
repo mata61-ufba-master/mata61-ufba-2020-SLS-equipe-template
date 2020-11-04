@@ -225,6 +225,8 @@ Eles serão ignorados na correção automática.
 ]
 ```
 
+![AST](../../resources/AST_rsyntaxast.png)
+
 Esse Exemplo de ilustração de AST foi produzido a partir de https://yohasebe.com/rsyntaxtree/
 
 
