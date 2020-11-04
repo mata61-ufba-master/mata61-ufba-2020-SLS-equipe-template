@@ -3,11 +3,11 @@
 ## Parte II: Análise Sintática
 
 Nesta parte do projeto, você irá implementar um analisador sintático para a [linguagem C-](../../language/README.md), incluindo a construção da árvore sintática abstrata (AST - Abstract Syntax Tree).
-O analisador sintático (_parser_) deve receber uma sequência de _tokens_ gerados pelo analisador léxico (_lexer_) para um programa C- e determinar se o programa segue ou não a especificação definida pela gramática de C-.
-Em caso de sucesso, o _parser_ deve gerar uma AST para o programa de entrada.
-Se alguma construção inválida for encontrada, ele deve parar e informar _error_.
+O analisador sintático (_parser_) deve receber uma sequência de _tokens_ gerados pelo analisador léxico (_lexer_) e determinar se um programa C- segue ou não a especificação definida por sua gramática.
+Em caso de sucesso, o _parser_ deve gerar uma AST para o programa de entrada analisado.
+Se alguma construção inválida for encontrada, ele deve parar e informar _syntax error_.
 
-A equipe deve usar o _lexer_ disponibilizado pelo professor: o arquivo  ```lexer.lex``` na pasta [src/lexer](../../../src/lexer/lexer.lex).
+A equipe deve usar o _lexer_ disponibilizado pela professora: o arquivo ```lexer.l``` na pasta [src/lexer](../../../src/lexer/lexer.l).
 
 Antes de iniciar a sua implementação, 
 recomendamos que leia com atenção o [capítulo 6](../../resources/chapter6.pdf) 
@@ -17,13 +17,13 @@ os exemplos de código e o material podem ser extremamente úteis.
 
 ### Notação para a Árvore Sintática Abstrata (Abstract Syntax Tree - AST)
 
-Há diversas formas para representar árvores sintáticas corretas geradas para um programa em C-. 
+Há diversas formas para representar árvores sintáticas corretas geradas para um programa C-. 
 Assim, em nosso projeto de compilador, é importante definir e usar um formato único para representar
 o código na AST, que contenha um número mínimo de nós e que seja independente de qualquer implementação de linguagem específica.
 
 Em nosso projeto de compilador, a saída do analisador sintático (_parser_) usará uma notação _labelled bracketing_. 
-Tal notação define listas aninhadas de prefix expressions e é equivalente à representação
-por meio uma estrutura de árvore. As prefix expressions correspondem aos nós da AST.
+Tal notação define listas aninhadas de _prefix expressions_ e é equivalente à representação
+por meio de uma estrutura de árvore. As _prefix expressions_ correspondem aos nós da AST.
 
 ```
 [operator [operand1] ... [operandN]]
@@ -39,77 +39,77 @@ Assim, a expressão ```4 == (2 + 2)``` em C-,
 é representada como ```[== 4 [+ 2 2]]``` na notação da AST.
 
 #### Listas de nós que podem ser mostrados na AST
+
 A seguir, apresentamos os tipos de nós que podem aparecem em uma AST e seus nomes correspondentes, e que deverão ser produzidos pelo seu analisador sintático:  
 
 ```
-
 [program  ... ]
 
 [var-declaration  ... ]
 
-[int]              ---> only int is allowed, variables cannot has void type
+[int]                ---> apenas int é permitido, e variáveis não podem ser do tipo void
 
-[ID]                 ---> variable name
+[ID]                 ---> nome de variável
 
-[\[\]]           ---> (optional) symbol to describe a variable as array; IMPORTANT: the backslash \ symbol is used to not interpret [ or ] as bracket nodes, but to be seen as visible symbols in the AST.
+[\[\]]               ---> (opcional) símbolo para descrever uma váriavel como array; IMPORTANTE: o símbolo de barra invertida (backslash \) é usado para não interpretar [ ou ] como nós de colchetes, mas para serem símbolos visíveis na AST.
 
 [fun-declaration  ... ]
 
-[int] / [void]       ---> either int or void type
+[int] / [void]       ---> o tipo int ou o tipo void 
 
-[ID]                              ---> function name
+[ID]                 ---> nome de função
 
 [params  ...  ]
 
-[param  ... ]               ---> (optional) parameter info
+[param  ... ]        ---> (opcional) informação sobre parâmetro
 
-[int] / [void]       ---> either int or void type
+[int] / [void]       ---> o tipo int ou o tipo void
 
-[ID]                 ---> variable name
+[ID]                 ---> nome de varável
 
-[compound-stmt  ... ]                       ---> (child options below)
+[compound-stmt  ... ]     ---> (opções de filho abaixo)
 
-[;]                                                  ---> either null statement
+[;]                       ---> null statement
 
-[selection-stmt ... ]             ---> or IF statement
+[selection-stmt ... ]     ---> ou comando IF 
 
-[EXPRESSION                     ---> recursive definition of any valid expression (binary expression, variable reference, function call, etc)
+[EXPRESSION               ---> definição recursiva de qualquer expressão válida (expressão binária, variable reference, function call, etc)
 
-[compound-stmt  ...]       --> "then" (true) branch
+[compound-stmt  ...]       --> ramo "then" (true) 
 
 . . .
 
-[compound-stmt  ... ]      --> (optional) "else" (false) branch
+[compound-stmt  ... ]      --> (opcional) ramo "else" (false) 
 
 . . .
 
 [iteration-stmt  ... ]
 
-[EXPRESSION                     ---> recursive definition of any valid expression (binary expression, variable reference, function call, etc)
+[EXPRESSION                 ---> definição recursiva de qualquer expressão válida (expressão binária, variable reference, function call, etc)
 
-[compound-stmt ... ]        --> loop block of statements
+[compound-stmt ... ]        --> loop bloco de comandos (statements)
 
 . . .
 
 [return-stmt ... ]
 
-[EXPRESSION                     ---> recursive definition of any valid expression (binary expression, variable reference, function call, etc)
+[EXPRESSION                     ---> definição recursiva de qualquer expressão válida (binary expression, variable reference, function call, etc)
 
-[OP ... ]                      ---> operators of binary expressions OP = {+, -, *, /, <, <=, >, >=, ==, !=, =}                             (child options below)
+[OP ... ]                      ---> operadores de expressão binária OP = {+, -, *, /, <, <=, >, >=, ==, !=, =}                             (opções de "filhos" abaixo)
 
 [var  ... ]               ---> variable reference
 
 [ID]
 
-[NUM]     ---> (optional) if array index
+[NUM]     ---> (opcional) se índice de array 
 
 [NUM]               ---> constant reference
 
-[call  ... ]              ----> function call
+[call  ... ]        ----> chamada (call) de função
 
 [ID]
 
-[args ... ]             ----> function arguments
+[args ... ]         ----> argumentos de função
 
 [var ... ]            . . .
 
@@ -119,7 +119,7 @@ A seguir, apresentamos os tipos de nós que podem aparecem em uma AST e seus nom
 
 [OP ... ]              . . .
 
-[OP ... ]              ---> recursively another binary expression
+[OP ... ]              ---> recursivamente outra expressão binária
 
 . . .
 
