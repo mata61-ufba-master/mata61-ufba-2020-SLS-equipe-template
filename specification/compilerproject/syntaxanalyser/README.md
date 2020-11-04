@@ -2,9 +2,12 @@
 
 ## Parte II: Análise Sintática
 
-Nesta parte do projeto, você irá implementar um analisador sintático para a [linguagem C-](../../language/README.md).
-O analisador sintático ou _parser_ deve receber uma sequência de _tokens_ gerados pelo analisador léxico.
-Se uma entrada inválida for encontrada, ele deve parar e informar _error_.
+Nesta parte do projeto, você irá implementar um analisador sintático para a [linguagem C-](../../language/README.md), incluindo a construção da árvore sintática abstrata (AST - Abstract Syntax Tree).
+O analisador sintático (_parser_) deve receber uma sequência de _tokens_ gerados pelo analisador léxico (_lexer_) para um programa C- e determinar se o programa segue ou não a especificação definida pela gramática de C-.
+Em caso de sucesso, o _parser_ deve gerar uma AST para o programa de entrada.
+Se alguma construção inválida for encontrada, ele deve parar e informar _error_.
+
+A equipe deve usar o _lexer_ disponibilizado pelo professor: o arquivo  ```lexer.lex``` na pasta [src/lexer](../../../src/lexer/lexer.lex).
 
 Antes de iniciar a sua implementação, 
 recomendamos que leia com atenção o [capítulo 6](../../resources/chapter6.pdf) 
