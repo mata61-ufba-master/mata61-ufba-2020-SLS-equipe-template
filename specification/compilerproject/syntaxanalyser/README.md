@@ -42,19 +42,19 @@ Assim, a expressão ```4 == (2 + 2)``` em C-,
 
 A seguir, apresentamos os tipos de nós que podem aparecem em uma AST e seus nomes correspondentes, e que deverão ser produzidos pelo seu analisador sintático:  
 
+```[program  ... ]```
+
+* ```[var-declaration  ... ]```
+
+   * [int]                ---> apenas int é permitido, e variáveis não podem ser do tipo void
+
+   * [ID]                 ---> nome de variável
+
+   * [\[\]]               ---> (opcional) símbolo para descrever uma váriavel como array; IMPORTANTE: o símbolo de barra invertida (backslash \) é usado para não interpretar [ ou ] como nós de colchetes, mas para serem símbolos visíveis na AST.
+
+* ```[fun-declaration  ... ]```
+
 ```
-[program  ... ]
-
-[var-declaration  ... ]
-
-[int]                ---> apenas int é permitido, e variáveis não podem ser do tipo void
-
-[ID]                 ---> nome de variável
-
-[\[\]]               ---> (opcional) símbolo para descrever uma váriavel como array; IMPORTANTE: o símbolo de barra invertida (backslash \) é usado para não interpretar [ ou ] como nós de colchetes, mas para serem símbolos visíveis na AST.
-
-[fun-declaration  ... ]
-
 [int] / [void]       ---> o tipo int ou o tipo void 
 
 [ID]                 ---> nome de função
