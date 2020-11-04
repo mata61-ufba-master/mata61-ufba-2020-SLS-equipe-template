@@ -13,7 +13,7 @@ recomendamos a leitura complementar do [capítulo 5](../../resources/30-chapter5
 Apesar da sintaxe de C- ser um pouco diferente da usada no livro acima, 
 os exemplos de código e o material podem ser úteis.
   
-O analisador sintático para C- deverá ser desenvolvido com Bison e integrado com o analisador léxico para C- desenvolvido com Flex.
+O analisador sintático para C- deverá ser desenvolvido com Bison, com base na [especificação sintática de C-](../../language/cminus-02.md) e integrado com o analisador léxico para C- desenvolvido com Flex.
 + Material de referência: [Introducing Bison](../../resources/32-IntroducingBison.pdf).
 
 ### Notação para a Árvore Sintática Abstrata (Abstract Syntax Tree - AST)
