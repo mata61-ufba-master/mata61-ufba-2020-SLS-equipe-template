@@ -50,76 +50,69 @@ A seguir, apresentamos os tipos de nós que podem aparecem em uma AST e seus nom
 
    * [ID]                 ---> nome de variável
 
-   * [\[\]]               ---> (opcional) símbolo para descrever uma váriavel como array; IMPORTANTE: o símbolo de barra invertida (backslash \) é usado para não interpretar [ ou ] como nós de colchetes, mas para serem símbolos visíveis na AST.
+   * ```[\[\]]```               ---> (opcional) símbolo para descrever uma váriavel como array; IMPORTANTE: o símbolo de barra invertida (backslash \) é usado para não interpretar [ ou ] como nós de colchetes, mas para serem símbolos visíveis na AST.
 
 * ```[fun-declaration  ... ]```
 
-```
-[int] / [void]       ---> o tipo int ou o tipo void 
+   * [int] / [void]       ---> o tipo int ou o tipo void 
 
-[ID]                 ---> nome de função
+   * [ID]                 ---> nome de função
 
-[params  ...  ]
+   * [params  ...  ]
 
-[param  ... ]        ---> (opcional) informação sobre parâmetro
+   * [param  ... ]        ---> (opcional) informação sobre parâmetro
 
-[int] / [void]       ---> o tipo int ou o tipo void
+   * [int] / [void]       ---> o tipo int ou o tipo void
 
-[ID]                 ---> nome de varável
+   * [ID]                 ---> nome de varável
 
-[compound-stmt  ... ]     ---> (opções de filho abaixo)
+   * [compound-stmt  ... ]     ---> (opções de filho abaixo)
 
-[;]                       ---> null statement
+      - [;]                       ---> null statement
 
-[selection-stmt ... ]     ---> ou comando IF 
+   * [selection-stmt ... ]     ---> ou comando IF 
 
-[EXPRESSION               ---> definição recursiva de qualquer expressão válida (expressão binária, variable reference, function call, etc)
+   * [EXPRESSION               ---> definição recursiva de qualquer expressão válida (expressão binária, variable reference, function call, etc)
 
-[compound-stmt  ...]       --> ramo "then" (true) 
+   * [compound-stmt  ...]       --> ramo "then" (true) 
 
-. . .
+   * [compound-stmt  ... ]      --> (opcional) ramo "else" (false) 
 
-[compound-stmt  ... ]      --> (opcional) ramo "else" (false) 
+   * [iteration-stmt  ... ]
 
-. . .
+   * [EXPRESSION                 ---> definição recursiva de qualquer expressão válida (expressão binária, variable reference, function call, etc)
 
-[iteration-stmt  ... ]
+   * [compound-stmt ... ]        --> loop bloco de comandos (statements)
 
-[EXPRESSION                 ---> definição recursiva de qualquer expressão válida (expressão binária, variable reference, function call, etc)
+   * [return-stmt ... ]
 
-[compound-stmt ... ]        --> loop bloco de comandos (statements)
+   * [EXPRESSION                     ---> definição recursiva de qualquer expressão válida (binary expression, variable reference, function call, etc)
 
-. . .
+   * [OP ... ]                      ---> operadores de expressão binária OP = {+, -, *, /, <, <=, >, >=, ==, !=, =}                             (opções de "filhos" abaixo)
 
-[return-stmt ... ]
+   * [var  ... ]               ---> variable reference
 
-[EXPRESSION                     ---> definição recursiva de qualquer expressão válida (binary expression, variable reference, function call, etc)
+   * [ID]
 
-[OP ... ]                      ---> operadores de expressão binária OP = {+, -, *, /, <, <=, >, >=, ==, !=, =}                             (opções de "filhos" abaixo)
+   * [NUM]     ---> (opcional) se índice de array 
 
-[var  ... ]               ---> variable reference
+   * [NUM]               ---> constant reference
 
-[ID]
+   * [call  ... ]        ----> chamada (call) de função
 
-[NUM]     ---> (opcional) se índice de array 
+   * [ID]
 
-[NUM]               ---> constant reference
+   * [args ... ]         ----> argumentos de função
 
-[call  ... ]        ----> chamada (call) de função
+   * [var ... ]   
 
-[ID]
+   * [NUM]      
 
-[args ... ]         ----> argumentos de função
+   * [call ... ]   
 
-[var ... ]            . . .
+   * [OP ... ]   
 
-[NUM]                          .. . 
-
-[call ... ]     . . .
-
-[OP ... ]              . . .
-
-[OP ... ]              ---> recursivamente outra expressão binária
+   * [OP ... ]              ---> recursivamente outra expressão binária
 
 . . .
 
