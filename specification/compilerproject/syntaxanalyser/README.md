@@ -60,11 +60,11 @@ A seguir, apresentamos os tipos de nós que podem aparecem em uma AST e seus nom
 
    * [params  ...  ]
 
-   * [param  ... ]        ---> (opcional) informação sobre parâmetro
+      * [param  ... ]        ---> (opcional) informação sobre parâmetro
 
-   * [int] / [void]       ---> o tipo int ou o tipo void
+         * [int] / [void]       ---> o tipo int ou o tipo void
 
-   * [ID]                 ---> nome de varável
+         * [ID]                 ---> nome de varável
 
    * [compound-stmt  ... ]     ---> (opções de filhos abaixo)
 
