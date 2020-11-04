@@ -66,55 +66,51 @@ A seguir, apresentamos os tipos de nós que podem aparecem em uma AST e seus nom
 
    * [ID]                 ---> nome de varável
 
-   * [compound-stmt  ... ]     ---> (opções de filho abaixo)
+   * [compound-stmt  ... ]     ---> (opções de filhos abaixo)
 
-      - [;]                       ---> null statement
+   - [;]                       ---> null statement
 
-   * [selection-stmt ... ]     ---> ou comando IF 
+   - [selection-stmt ... ]     ---> ou comando IF 
 
-   * [EXPRESSION               ---> definição recursiva de qualquer expressão válida (expressão binária, variable reference, function call, etc)
+      * [EXPRESSION               ---> definição recursiva de qualquer expressão válida (expressão binária, variable reference, function call, etc)
 
-   * [compound-stmt  ...]       --> ramo "then" (true) 
+      * [compound-stmt  ...]       --> ramo "then" (true) 
 
-   * [compound-stmt  ... ]      --> (opcional) ramo "else" (false) 
+      * [compound-stmt  ... ]      --> (opcional) ramo "else" (false) 
 
-   * [iteration-stmt  ... ]
+   - [iteration-stmt  ... ]
 
-   * [EXPRESSION                 ---> definição recursiva de qualquer expressão válida (expressão binária, variable reference, function call, etc)
+      * [EXPRESSION                 ---> definição recursiva de qualquer expressão válida (expressão binária, variable reference, function call, etc)
 
-   * [compound-stmt ... ]        --> loop bloco de comandos (statements)
+      * [compound-stmt ... ]        --> loop bloco de comandos (statements)
 
-   * [return-stmt ... ]
+   - [return-stmt ... ]
 
-   * [EXPRESSION                     ---> definição recursiva de qualquer expressão válida (binary expression, variable reference, function call, etc)
+      * [EXPRESSION                     ---> definição recursiva de qualquer expressão válida (binary expression, variable reference, function call, etc)
 
-   * [OP ... ]                      ---> operadores de expressão binária OP = {+, -, *, /, <, <=, >, >=, ==, !=, =}                             (opções de "filhos" abaixo)
+    - [OP ... ]                      ---> operadores de expressão binária OP = {+, -, *, /, <, <=, >, >=, ==, !=, =}                             (opções de "filhos" abaixo)
 
-   * [var  ... ]               ---> variable reference
+      * [var  ... ]               ---> variable reference
 
-   * [ID]
+         * [ID]
 
-   * [NUM]     ---> (opcional) se índice de array 
+         * [NUM]     ---> (opcional) se índice de array 
 
-   * [NUM]               ---> constant reference
+      * [NUM]               ---> constant reference
 
-   * [call  ... ]        ----> chamada (call) de função
+      * [call  ... ]        ----> chamada (call) de função
 
-   * [ID]
+         * [ID]
 
-   * [args ... ]         ----> argumentos de função
+         * [args ... ]         ----> argumentos de função
 
-   * [var ... ]   
+            * [var ... ]   
 
-   * [NUM]      
+            * [NUM]      
 
-   * [call ... ]   
+            * [call ... ]   
 
-   * [OP ... ]   
+            * [OP ... ]   
 
-   * [OP ... ]              ---> recursivamente outra expressão binária
+      * [OP ... ]              ---> recursivamente outra expressão binária
 
-. . .
-
-```
-. . .
