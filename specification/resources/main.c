@@ -1,5 +1,5 @@
 int main(void) {
         yylex();
-	a = b + c;
+	      a = b + c;
         printf("Linhas %d, Palavras %d, Caracteres %d\n", lines, words, chars);
 }
