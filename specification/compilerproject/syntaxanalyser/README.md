@@ -6,16 +6,15 @@ Nesta parte do projeto, você irá implementar um analisador sintático para a [
 O analisador sintático (_parser_) deve receber uma sequência de _tokens_ gerados pelo analisador léxico (_lexer_) e determinar se um programa C- segue ou não a especificação definida por sua gramática.
 Em caso de sucesso, o _parser_ deve gerar uma AST para o programa de entrada analisado.
 
-A equipe deve usar o _lexer_ disponibilizado pela professora: o arquivo ```lexer.l``` na pasta [src/lexer](../../../src/lexer/lexer.l).
+A equipe deve usar como ponto de partida para o _lexer_, o arquivo disponibilizado pela professora: ```lexer.l```, na pasta [src/lexer](../../../src/lexer/lexer.l).
 
 Antes de iniciar a sua implementação, 
-recomendamos que leia com atenção o [capítulo 6](../../resources/chapter6.pdf) 
-do livro "Introduction to Compilers and Language Design" de Douglas Thain. 
+recomendamos a leitura complementar do [capítulo 5](../../resources/30-chapter5-AS.pdf) e do [capítulo 6](../../resources/31-chapter6-AST.pdf) do livro "Introduction to Compilers and Language Design" de Douglas Thain. 
 Apesar da sintaxe de C- ser um pouco diferente da usada no livro acima, 
-os exemplos de código e o material podem ser extremamente úteis.
+os exemplos de código e o material podem ser úteis.
   
-O analisador sintático para C- deverá ser desenvolvido com o Bison e integrado com o analisador léxico para C-.
-+ Material de referência: [Introducing Bison](../resources/32-IntroducingBison.pdf).
+O analisador sintático para C- deverá ser desenvolvido com Bison e integrado com o analisador léxico para C- desenvolvido com Flex.
++ Material de referência: [Introducing Bison](../../resources/32-IntroducingBison.pdf).
 
 ### Notação para a Árvore Sintática Abstrata (Abstract Syntax Tree - AST)
 
@@ -121,14 +120,13 @@ A seguir, apresentamos os tipos de nós que podem aparecem em uma AST e seus nom
 
 O Bison deverá ser utilizado para geração do _parser_, trabalhando em conjunto com o _lexer_ gerado pelo Flex (trabalho prático 1).
 
-
 ```$ bison -d parser.y```
 
 A opção -d faz com que o Bison gere dois arquivos associados a parser.y:
 + parser.tab.c
 + parser.tab.h (este arquivo faz a interface com o Flex).
 
-O arquivo lexer.l (TP1) deverá ser alterado para incluir o arquivo "parser.tab.h". Todo o código usado para definir tokens, por exemplo, listas ou tipos escalares, deve ser eliminado. Também deve ser eliminado o código C ou C++ usado para chamar o _lexer_ e gerar o arquivo de saída.
+O arquivo lexer.l (TP1) deverá ser alterado para incluir o arquivo "parser.tab.h". Todo o código usado para definir tokens, por exemplo, listas ou tipos escalares, deve ser eliminado. Também deve ser eliminado o código C ou C++ usado para chamar o _lexer_ e gerar o arquivo de saída solicitado no TP1.
 
 Em seguida, rodar o flex:
 
