@@ -115,15 +115,18 @@ A seguir, apresentamos os tipos de nós que podem aparecem em uma AST e seus nom
       * [OP ... ]              ---> recursivamente outra expressão binária
 
 
-### How to run it (using two arguments: input and output)
-
-The program must read input from a file (source) and write output to another file (target). In case of syntactic error, the contents of the output file must be empty (0 bytes).
+### Como executar o _parser_ (usando dois argumentos: entrada e saída)
+   
+O programa _parser_ deve ler a entrada a partir de um arquivo (source) 
+e escrever a saída em outro arquivo (target) com extensão ".ast". 
+No caso de erro sintático, o conteúdo do arquivo de saída deve ser vazio (0 bytes).
 
 ```$ ./parser main.c main.ast```
 
-### Example of input file (main.c)
+### Exemplo de arquivo de entrada (main.c)
 
-```int g;
+```
+int g;
 
 int foo(int x, int y, int z[]) {
 
@@ -149,9 +152,11 @@ void main(void) {
 }
 ```
 
-### Example of output file (main.ast)
+### Exemplo de arquivo de saída (main.ast)
 
-Important: You do not have to worry about whitespaces in the output file, they will be ignored during the auto-grading process.
+Importante: Não é preciso se preocupar com "whitespaces" no arquivo de saída.
+Eles serão ignorados na correção automática.
+
 
 ```
 [program 
@@ -199,7 +204,8 @@ Important: You do not have to worry about whitespaces in the output file, they w
 ]
 ```
 
-Exemplo de ilustração de AST (produzido a partir de https://yohasebe.com/rsyntaxtree/)
+Esse Exemplo de ilustração de AST foi produzido a partir de https://yohasebe.com/rsyntaxtree/
+
 
 --------
 Adaptado e traduzido a partir do material do Prof. Vinicius Petrucci.
