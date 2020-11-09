@@ -1,6 +1,9 @@
 # Recursos
 
 + [Livro online de Douglas Thain](https://www3.nd.edu/~dthain/compilerbook/)
+   - [Parser in Practice](https://www3.nd.edu/~dthain/compilerbook/chapter5.pdf)
+   - [AST - Abstract Syntax Tree](https://www3.nd.edu/~dthain/compilerbook/chapter6.pdf)
+
 + [Lex e Yacc](http://dinosaur.compilertools.net/)
 
 ## Material 
@@ -8,6 +11,10 @@
 Ver a turma __MATA61_SLS_2020__ no [Classroom da UFBA](https://gsuite.google.com/dashboard) para ter acesso aos vídeos e outros materiais disponibilizados.
 
 ## Links
+
+### Ferramentas
+
++ [RSyntaxTree](https://yohasebe.com/rsyntaxtree/)
 
 ### Sobre github
 

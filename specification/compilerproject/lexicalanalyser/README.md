@@ -26,7 +26,7 @@ O formato de saída é:
 
 ``` (line_num,token_class,"lexeme") ```
   
-## Exemplo de arquivo de entrada (main.c)
+## Exemplo de arquivo de entrada em C- (main.c)
 ```
 void main(void)
 {
@@ -41,7 +41,8 @@ Seu programa deve ler a entrada a partir de um arquivo (_source_) e escrever a s
 $ ./lexer main.c main.lex
 ```
 
-## Exemplo de arquivo de saída gerado pelo analisador léxico (main.lex)
+## Modelo de arquivo de saída gerado pelo analisador léxico
+Após a execução de ./lexer, tendo como entrada o arquivo main.c (contendo um programa C-), a saída gerada no arquivo main.lex deverá ser:
 ```
 (1,KEY,"void")
 (1,ID,"main")
@@ -62,14 +63,13 @@ $ ./lexer main.c main.lex
 ```
 
 ## Scripts
-Não se esqueça de criar dois arquivos em sua pasta de submissão: __compile.sh__ e __run.sh__ para compilar e executar o seu código:
+Não se esqueça de criar dois arquivos na pasta ```src/lexer```: __compile.sh__ e __run.sh__ para compilar e executar o seu código:
 
 + __compile.sh__ (se estiver usando a ferramenta Flex)
 ```
-flex lexer.lex
+flex lexer.lex     // colocar seu código FLEX no arquivo lexer.lex 
 gcc -o lexer lex.yy.c -ll
 ```
-
 + __run.sh__ (recebe dois argumentos que deverão ser nomes de arquivos)
 ```
 ./lexer $1 $2
@@ -78,4 +78,4 @@ gcc -o lexer lex.yy.c -ll
 __Observação Importante sobre__ ___Line Endings___: Arquivos de texto criados com DOS/Windows machines usam _carriage return_ _line feed_ ("\r\n") para terminar uma linha, enquando que os criados com Unix usam apenas o _line feed_ ("\n").
 
 -----
-Material cedido pelo Prof. Vinicius.
+Adaptado a partir do material cedido pelo Prof. Vinicius Petrucci.
