@@ -6,15 +6,14 @@ Nesta parte do projeto, você irá implementar um analisador sintático para a [
 O analisador sintático (_parser_) deve receber uma sequência de _tokens_ gerados pelo analisador léxico (_lexer_) e determinar se um programa C- segue ou não a especificação definida por sua gramática.
 Em caso de sucesso, o _parser_ deve gerar uma AST para o programa de entrada analisado.
 
-A equipe deve usar como ponto de partida para o _lexer_, o arquivo disponibilizado pela professora: ```lexer.l```, na pasta [src/lexer](../../../src/lexer/lexer.l).
-
-Antes de iniciar a sua implementação, 
-recomendamos a leitura complementar do [capítulo 5](../../resources/30-chapter5-AS.pdf) e do [capítulo 6](../../resources/31-chapter6-AST.pdf) do livro "Introduction to Compilers and Language Design" de Douglas Thain. 
-Apesar da sintaxe de C- ser um pouco diferente da usada no livro acima, 
-os exemplos de código e o material podem ser úteis.
+Antes de iniciar a sua implementação, recomendamos a leitura complementar de dois capítulos do livro "Introduction to Compilers and Language Design" de Douglas Thain. Apesar da sintaxe de C- ser um pouco diferente da usada no livro acima, os exemplos de código e o material podem ser úteis.
++ [capítulo 5](../../resources/30-chapter5-AS.pdf);
++ [capítulo 6](../../resources/31-chapter6-AST.pdf). 
   
 O analisador sintático para C- deverá ser desenvolvido com Bison, com base na [especificação sintática de C-](../../language/cminus-02.md) e integrado com o analisador léxico para C- desenvolvido com Flex.
 + Material de referência: [Introducing Bison](../../resources/32-IntroducingBison.pdf).
+
+A equipe deve usar como ponto de partida para o _lexer_, o arquivo disponibilizado pela professora: ```lexer.l```, na pasta [src/lexer](../../../src/lexer/lexer.l).
 
 ### Notação para a Árvore Sintática Abstrata (Abstract Syntax Tree - AST)
 
@@ -22,7 +21,8 @@ Há diversas formas para representar árvores sintáticas corretas geradas para 
 Assim, em nosso projeto de compilador, é importante definir e usar um formato único para representar
 o código na AST, que contenha um número mínimo de nós e que seja independente de qualquer implementação de linguagem específica.
 
-Em nosso projeto de compilador, a saída do analisador sintático (_parser_) usará uma notação _labelled bracketing_. 
+Em nosso projeto de compilador, a saída do analisador sintático (_parser_) 
+usará uma notação de _labelled bracketing_. 
 Tal notação define listas aninhadas de _prefix expressions_ e é equivalente à representação
 por meio de uma estrutura de árvore. As _prefix expressions_ correspondem aos nós da AST.
 
@@ -144,7 +144,7 @@ No caso de erro sintático, o conteúdo do arquivo de saída deve ser vazio (0 b
 
 ```$ ./parser main.c main.ast```
 
-### Exemplo de arquivo de entrada (main.c)
+### Exemplo de arquivo de entrada em C- (main.c)
 
 ```
 int g;
@@ -173,7 +173,7 @@ void main(void) {
 }
 ```
 
-### Exemplo de arquivo de saída (main.ast)
+### Exemplo de arquivo de saída após análise sintática do programa C- (main.ast)
 
 Importante: Não é preciso se preocupar com "whitespaces" no arquivo de saída.
 Eles serão ignorados na correção automática.
@@ -188,7 +188,8 @@ Eles serão ignorados na correção automática.
     [params 
       [param [int] [x]] 
       [param [int] [y]] 
-      [param [int] [z] [\[\]]]]
+      [param [int] [z] [\[\]]]
+    ]
     [compound-stmt 
       [= [var [z] [0]] [0]]
       [= [var [y]] 
@@ -228,7 +229,6 @@ Eles serão ignorados na correção automática.
 ![AST](../../resources/AST_rsyntaxast.png)
 
 Esse Exemplo de ilustração de AST foi produzido a partir de https://yohasebe.com/rsyntaxtree/
-
 
 --------
 Adaptado e traduzido a partir do material do Prof. Vinicius Petrucci.
