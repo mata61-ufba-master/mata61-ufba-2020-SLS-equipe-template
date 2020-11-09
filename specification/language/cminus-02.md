@@ -43,7 +43,7 @@
 
 <selection-stmt> ::= if ( <expression> ) <statement> 
 
-                  | if ( <expression> ) <statement> else <statement>
+                   | if ( <expression> ) <statement> else <statement>
 
 <iteration-stmt> ::= while ( <expression> ) <statement>
 
@@ -58,7 +58,7 @@
 
 <simple-expression> ::= <additive-expression> <relop> <additive-expression> 
 
-                       | <additive-expression>
+                      | <additive-expression>
 
 <relop> ::= <= | < | > | >= | == | !=
 
@@ -81,4 +81,4 @@
 ```
 
 -----
-Adaptação com base no material cedido pelo Prof. Vinicius.
+Adaptação com base no material cedido pelo Prof. Vinicius Petrucci.
