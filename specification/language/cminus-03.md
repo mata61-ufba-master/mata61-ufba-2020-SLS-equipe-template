@@ -1,3 +1,3 @@
 ## Aspectos Semânticos
 
-
+A definir.
