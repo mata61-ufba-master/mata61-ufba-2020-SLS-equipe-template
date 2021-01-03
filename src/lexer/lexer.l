@@ -4,9 +4,9 @@
 
 %%
 [0-9]+          { return NUM; }
-("if"|"else"|"int"|"return"|"while")    { return KEY; }
+("if"|"else"|"int"|"return"|"void"|"while")    { return KEY; }
 [A-Za-z][A-Za-z0-9]*                    { return ID; }
-"//"[^/\n]+"\n" { }
+"//".*          { /* comment */ }
 "!="            { return SYM; }
 "="             { return SYM; }
 "=="            { return SYM; }
@@ -20,10 +20,13 @@
 ")"             { return SYM; }
 "{"             { return SYM; }
 "}"             { return SYM; }
+"["             { return SYM; }
+"]"             { return SYM; }
 "+"             { return SYM; }
 "-"             { return SYM; }
 "*"             { return SYM; }
 "/"             { return SYM; }
-[ \t\n]         { }
+[ \t]           { /* skip white space */ }
+[\n]            { /* skip newline */ }
 .               { return ERROR; }
 %%
